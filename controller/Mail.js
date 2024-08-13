@@ -1,9 +1,11 @@
-import { design } from '../design/design';
+const design = require('../design/design');
+const nodemailer = require('nodemailer')
+require('dotenv').config()
 
 exports.sendEmail = async (req, res) => {
   try {
 
-    console.log('------ Sending Mail.... ------\n', doc)
+    console.log('------ Sending Mail.... ------\n')
 
     const transporter = nodemailer.createTransport({
       host: process.env.MAIL_HOST,
@@ -20,7 +22,12 @@ exports.sendEmail = async (req, res) => {
       html: design,
     })
 
-    console.log('------ Mail Successfully Sent ------\n', doc)
+    console.log('------ Mail Successfully Sent ------\n')
+
+    return res.status(200).json({
+      success: true,
+      message: "Mail Successfully Sent"
+    })
 
   } catch (error) {
     console.error(error)

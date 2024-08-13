@@ -9,7 +9,7 @@ app.use(express.json());
 
 // Mounting API Routes
 const router = require('./router/Mail')
-app.use('/api/v1/', router)
+app.use('/api/v1', router)
 
 // Acitivate Server 
 app.listen(port, () => {
